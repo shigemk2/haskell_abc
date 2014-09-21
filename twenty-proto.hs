@@ -1,0 +1,2 @@
+-- main = do
+--   print [(x, y, z) | x*x + y*y == z*z, x+y+z < 20]
