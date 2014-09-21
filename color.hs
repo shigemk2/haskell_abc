@@ -1,22 +1,23 @@
-data Color = Blue | Red | Green | White | Miku | Magenta | Brown
+data Color = Blue | Red | Magenta | Green | Cyan | Yellow | White
     deriving Show
 
-toInt Blue    = 1
-toInt Red     = 2
-toInt Magenta = 3
-toInt Green   = 4
-toInt Miku    = 5
-toInt Brown   = 6
-toInt White   = 7
-
-toColor 1 = Blue
-toColor 2 = Red
-toColor 4 = Green
-toColor 7 = White
-
-mix x y = toColor ((toInt x) + (toInt y))
+mix Blue    Red     = Magenta
+mix Blue    Magenta = Magenta
+mix Blue    Green   = Cyan
+mix Blue    Cyan    = Cyan
+mix Blue    Yellow  = White
+mix Red     Magenta = Magenta
+mix Red     Green   = Yellow
+mix Red     Cyan    = White
+mix Red     Yellow  = Yellow
+mix Magenta Green   = White
+mix Magenta Cyan    = White
+mix Magenta Yellow  = White
+mix Green   Cyan    = Cyan
+mix Green   Yellow  = Yellow
+mix Cyan    Yellow  = White
+mix White   _       = White
+mix c1      c2      = mix c2 c1
 
 main = do
-    print Blue
-    print Red
-    print $ mix Blue Red
+    print $ mix Red Blue
