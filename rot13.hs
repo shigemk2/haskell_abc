@@ -1,7 +1,8 @@
 import Data.Char
 
-rot13 str = chr ((ord 'A') + 13)
+rot13 str = chr ((ord str) + 13)
 
 main = do
-    let a = (ord 'A') + 13
-    print $ chr a
+    print [rot13 'A', rot13 'B', rot13 'C', rot13 'D', rot13 'E']
+    print [rot13 x | x <- "abcde"]
+    print [rot13 x | x <- "I am shigemk2"]
