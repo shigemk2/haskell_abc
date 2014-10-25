@@ -17,4 +17,5 @@ isort (x:xs) = trace dbg1 $ trace dbg2 ret
                " = " ++ show ret
 
 main = do
-    traceIO $ show $ isort [4, 6, 9, 8, 3, 5, 1, 7, 2]
+    print $ insert 4 [1,8,7]
+    -- traceIO $ show $ isort [4, 6, 9, 8, 3, 5, 1, 7, 2]
