@@ -1,7 +1,6 @@
 msplit x =
-    x !! key2
+    take key x
     where
-      key1 = length x - 1
-      key2 = div key1 2
+      key = (div (length x - 1) 2) + 1
 main = do
   print $ msplit [1,2,3,4,5,6]
