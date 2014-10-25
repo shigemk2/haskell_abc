@@ -1,13 +1,20 @@
 import Debug.Trace
 
-test [x] = [x]
-test (x:xs) = trace dbg $ x:y:ys
+bubble _ [x] = [x]
+bubble n (x:xs)
+    | y < x     = trace dbg2 $ y : bubble (n + 1) (x:ys)
+    | otherwise = trace dbg3 $ x : bubble (n + 1) (y:ys)
     where
-      dbg = show x ++ ":" ++ show y ++ ":" ++ show ys
-      (y:ys) = test xs
--- test (x:xs) = x:y:ys
+      spc = replicate (n * 2) ' '
+      dbg1 = spc ++ "bubble (" ++ show x ++ ":" ++ show xs ++ ")"
+      dbg2 = spc ++ "= " ++ show y ++ " : bubble (" ++ show x ++ ":" ++ show ys ++ ")"
+      dbg3 = spc ++ "= " ++ show x ++ " : bubble (" ++ show y ++ ":" ++ show ys ++ ")"
+      (y:ys) = trace dbg1 $ bubble (n + 1) xs
+
+-- bubble (x:xs) = x:y:ys
 --     where
---       (y:ys) = test xs
+--       (y:ys) = bubble xs
 
 main = do
-  print $ test [1..5]
+  -- print $ bubble [10,2,4,5,1,3,6,9,8,7]
+  print $ bubble 0 [4, 3, 1, 5, 2]
