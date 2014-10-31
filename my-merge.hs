@@ -1,14 +1,14 @@
-mtake x =
-    take key x
-    where
-      key = (div (length x - 1) 2) + 1
+merge xs [] = xs
+merge [] ys = ys
+merge (x:xs) (y:ys)
+      | x < y     = x : merge xs (y:ys)
+      | otherwise = y : merge (x:xs) ys
 
-mdrop x =
-    mdrop $ drop key x
-    where
-      key = (div (length x - 1) 2) + 1
+msort [] = []
+msort [x] = [x]
+msort xs = merge (msort (take h xs)) (msort (drop h xs))
+           where
+             h = (length xs) `div` 2
+
 main = do
-  print $ mtake x
-  print $ mdrop x
-  where
-    x = [1,2,3,4,5,6]
+  print $ msort [4, 6, 9, 8, 3, 5, 1, 7, 2]
