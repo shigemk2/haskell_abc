@@ -7,8 +7,8 @@ merge (x:xs) (y:ys)
       | x < y     = trace dbg1 $ x : merge xs (y:ys)
       | otherwise = trace dbg2 $ y : merge (x:xs) ys
       where
-        dbg1 = "x < y " ++ "x: " ++ show x ++ " y: " ++ show y ++ show (x:xs) ++ show (y:ys)
-        dbg2 = "otherwise " ++ show (x:xs) ++ show (y:ys)
+        dbg1 = "x < y " ++ "x: " ++ show x ++ " y: " ++ show y ++ " " ++ show (x:xs) ++ show (y:ys)
+        dbg2 = "otherwise " ++ "x: " ++ show x ++ " y: " ++ show y ++ " " ++ show (x:xs) ++ show (y:ys)
 
 msort [] = []
 msort [x] = [x]
