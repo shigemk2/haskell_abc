@@ -10,6 +10,7 @@ tests = TestList
     , "fact 3" ~: fact 3 ~?= 6
     , "fact 4" ~: fact 4 ~?= 24
     , "fact 5" ~: fact 5 ~?= 120
+    -- , "fact 5" ~: fact 5 ~?= 100
     ]
 
 main = do
